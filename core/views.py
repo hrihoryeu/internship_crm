@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin
 
-# Create your views here.
+
+class AbstractView(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
+    queryset = None
+
+    def get_queryset(self):
+        return self.queryset
+
+    class Meta:
+        abstract = True
