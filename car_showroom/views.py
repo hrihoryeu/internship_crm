@@ -13,21 +13,21 @@ from .serializers import (
 from core.views import AbstractView
 
 
-class CarShowroomView(AbstractView):
+class CarShowroomViewSet(AbstractViewSet):
     queryset = CarShowroom.objects.all()
     serializer_class = CarShowroomSerializer
 
 
-class CarShowroomCarView(AbstractView):
+class CarShowroomCarViewSet(AbstractViewSet):
     queryset = CarShowroomCar.objects.all()
     serializer_class = CarShowroomCarSerializer
 
 
-class CarShowroomSaleView(AbstractView):
+class CarShowroomSaleViewSet(AbstractViewSet):
     queryset = CarShowroomSale.objects.all()
     serializer_class = CarShowroomSaleSerializer
 
 
-class CarShowroomCustomerView(AbstractView):
+class CarShowroomCustomerViewSet(AbstractViewSet):
     queryset = CarShowroomCustomer.objects.all()
     serializer_class = CarShowroomCustomerSerializer

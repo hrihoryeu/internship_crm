@@ -1,13 +1,10 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import (
-    CustomerView,
-    OfferView
-)
+from .views import CustomerViewSet, OfferViewSet
 
 
 router = DefaultRouter()
-router.register('customers', CustomerView)
-router.register('offers', OfferView)
+router.register('customers', CustomerViewSet)
+router.register('offers', OfferViewSet)
 
 urlpatterns = router.urls

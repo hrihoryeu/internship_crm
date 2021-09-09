@@ -1,17 +1,17 @@
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    CarView,
-    ProviderView,
-    ProviderCarView,
-    ProviderSaleView,
+    CarViewSet,
+    ProviderViewSet,
+    ProviderCarViewSet,
+    ProviderSaleViewSet,
 )
 
 
 router = DefaultRouter()
-router.register('cars', CarView)
-router.register('providers', ProviderView)
-router.register('provider-cars', ProviderCarView)
-router.register('provider-sales', ProviderSaleView)
+router.register('cars', CarViewSet)
+router.register('providers', ProviderViewSet)
+router.register('provider-cars', ProviderCarViewSet)
+router.register('provider-sales', ProviderSaleViewSet)
 
 urlpatterns = router.urls

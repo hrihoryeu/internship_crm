@@ -1,6 +1,11 @@
 from rest_framework import serializers
 
-from .models import Car, Provider, ProviderCar, ProviderSale
+from .models import (
+    Car,
+    Provider,
+    ProviderCar,
+    ProviderSale,
+)
 
 
 class CarSerializer(serializers.ModelSerializer):
