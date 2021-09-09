@@ -10,7 +10,7 @@ from .serializers import (
     CarShowroomSaleSerializer,
     CarShowroomCustomerSerializer,
 )
-from core.views import AbstractView
+from core.views import AbstractViewSet
 
 
 class CarShowroomViewSet(AbstractViewSet):
