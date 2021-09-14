@@ -1,6 +1,13 @@
-from .models import Customer, Offer
-from .serializers import CustomerSerializer, OfferSerializer
+from .models import Customer, Offer, User
+from .serializers import CustomerSerializer, OfferSerializer, UserSerializer
 from core.views import AbstractViewSet
+
+from rest_framework.viewsets import ModelViewSet
+
+
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class CustomerViewSet(AbstractViewSet):
