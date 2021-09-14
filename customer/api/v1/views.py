@@ -1,5 +1,5 @@
-from .models import Customer, Offer, User
-from .serializers import CustomerSerializer, OfferSerializer, UserSerializer
+from customer.models import Customer, Offer, User
+from customer.api.v1.serializers import CustomerSerializer, OfferSerializer, UserSerializer
 from core.views import AbstractViewSet
 
 from rest_framework.viewsets import ModelViewSet
