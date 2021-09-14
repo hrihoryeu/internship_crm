@@ -17,6 +17,9 @@ class CarShowroom(models.Model):
     ))
     unique_customers = models.JSONField()
 
+    def __str__(self):
+        return self.title
+
 
 class CarShowroomSale(Sale):
     car_showroom = models.ForeignKey(CarShowroom, on_delete=models.CASCADE)
