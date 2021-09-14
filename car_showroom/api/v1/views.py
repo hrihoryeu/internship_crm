@@ -1,4 +1,4 @@
-from .models import (
+from car_showroom.models import (
     CarShowroom,
     CarShowroomCar,
     CarShowroomSale,

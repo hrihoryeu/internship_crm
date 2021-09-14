@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import (
+from car_showroom.models import (
     CarShowroom,
     CarShowroomSale,
     CarShowroomCustomer,
