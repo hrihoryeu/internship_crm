@@ -10,6 +10,9 @@ class Car(models.Model):
     title = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.title
+
 
 class Provider(models.Model):
     title = models.CharField(max_length=100)
