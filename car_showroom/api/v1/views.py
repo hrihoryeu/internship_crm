@@ -12,28 +12,30 @@ from car_showroom.models import (
     CarShowroomSale,
     CarShowroomCustomer,
 )
-from core.views import AbstractViewSet
+
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin
 
 
-class CarShowroomViewSet(AbstractViewSet):
+class CarShowroomViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = CarShowroom.objects.all()
     serializer_class = CarShowroomSerializer
 
 
-class CarShowroomCarViewSet(AbstractViewSet):
+class CarShowroomCarViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = CarShowroomCar.objects.all()
     serializer_class = CarShowroomCarSerializer
 
 
-class CarShowroomSaleViewSet(AbstractViewSet):
+class CarShowroomSaleViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = CarShowroomSale.objects.all()
     serializer_class = CarShowroomSaleSerializer
 
 
-class CarShowroomCustomerViewSet(AbstractViewSet):
+class CarShowroomCustomerViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = CarShowroomCustomer.objects.all()
     serializer_class = CarShowroomCustomerSerializer

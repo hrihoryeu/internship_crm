@@ -12,28 +12,30 @@ from provider.models import (
     ProviderCar,
     ProviderSale,
 )
-from core.views import AbstractViewSet
+
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin
 
 
-class CarViewSet(AbstractViewSet):
+class CarViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = Car.objects.all()
     serializer_class = CarSerializer
 
 
-class ProviderViewSet(AbstractViewSet):
+class ProviderViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = Provider.objects.all()
     serializer_class = ProviderSerializer
 
 
-class ProviderCarViewSet(AbstractViewSet):
+class ProviderCarViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = ProviderCar.objects.all()
     serializer_class = ProviderCarSerializer
 
 
-class ProviderSaleViewSet(AbstractViewSet):
+class ProviderSaleViewSet(ListModelMixin, GenericViewSet, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin):
     permission_classes = (IsAdminOrViewOnly,)
     queryset = ProviderSale.objects.all()
     serializer_class = ProviderSaleSerializer
