@@ -1,4 +1,4 @@
-from .models import (
+from provider.models import (
     Car,
     Provider,
     ProviderCar,
