@@ -15,6 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+    TokenObtainPairView,
+)
+
 from .yasg import urlpatterns as doc_urls
 
 
@@ -23,6 +29,8 @@ urlpatterns = [
     path('api/provider/', include('provider.urls')),
     path('api/car_showroom/', include('car_showroom.urls')),
     path('api/customer/', include('customer.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token-obtain-pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
 ]
 
 urlpatterns += doc_urls
