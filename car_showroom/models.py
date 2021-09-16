@@ -8,7 +8,6 @@ from core.models import Sale
 
 class CarShowroom(models.Model):
     title = models.CharField(max_length=30)
-    location = fields.CountryField()
     specs = models.JSONField()
     car_list = models.ManyToManyField('provider.Car', through='CarShowroomCar')
     customers_list = models.ManyToManyField('customer.Customer', through='CarShowroomCustomer')
