@@ -21,8 +21,6 @@ class CarShowroomSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         locations_data = validated_data.pop('location')
         car_showroom = CarShowroom.objects.create(**validated_data)
-        print(f'valdata - {validated_data}')
-        print(f'location data - {locations_data}')
         for location_data in locations_data:
             Location.objects.create(car_showroom=car_showroom, **location_data)
         return car_showroom
