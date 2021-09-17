@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-from customer.models import Customer
 from car_showroom.models import CarShowroom
 from core.models import Sale
 
@@ -9,6 +8,9 @@ from core.models import Sale
 class Car(models.Model):
     title = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.title
 
 
 class Provider(models.Model):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import (
+from provider.models import (
     Car,
     Provider,
     ProviderCar,

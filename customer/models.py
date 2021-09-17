@@ -6,6 +6,9 @@ class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.user.username
+
 
 class Offer(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

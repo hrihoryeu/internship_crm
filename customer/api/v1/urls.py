@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import CustomerViewSet, OfferViewSet, UserViewSet
+from customer.api.v1.views import CustomerViewSet, OfferViewSet, UserViewSet
 
 
 router = DefaultRouter()
