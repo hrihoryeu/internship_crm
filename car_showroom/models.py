@@ -1,8 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-from django_countries import fields
-
 from core.models import Sale
 
 

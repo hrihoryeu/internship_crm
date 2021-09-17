@@ -30,5 +30,3 @@ class Location(models.Model):
 
     def __str__(self):
         return f'{self.country.name} - {self.city} - {self.street} - {self.building_number}'
-
-

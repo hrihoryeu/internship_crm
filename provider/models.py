@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-from customer.models import Customer
 from car_showroom.models import CarShowroom
 from core.models import Sale
 
