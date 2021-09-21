@@ -13,12 +13,14 @@ services:
       - redis
   celery:
     build: .
-    command: celery worker -app=core --loglevel=info
+    command: celery -A internship_crm worker -l INFO
     volumes:
       - .:/Users/ye/Documents/work/itgenio/python/internship_crm/
     depends_on:
       - web
       - redis
+    env_file:
+      - .env
   db:
     image: postgres:12.0-alpine
     env_file:
