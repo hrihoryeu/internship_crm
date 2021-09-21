@@ -16,6 +16,8 @@ Django = "*"
 drf-yasg = "*"
 flake8 = "*"
 django-debug-toolbar = "*"
+celery = "*"
+redis = "*"
 
 [dev-packages]
 
