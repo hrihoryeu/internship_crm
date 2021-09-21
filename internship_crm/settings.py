@@ -196,3 +196,6 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_BACKEND', 'redis://redis:6379/0')
