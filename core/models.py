@@ -30,3 +30,24 @@ class Location(models.Model):
 
     def __str__(self):
         return f'{self.country.name} - {self.city} - {self.street} - {self.building_number}'
+
+
+class IsActive(models.Model):
+    is_active = models.BooleanField
+
+    class Meta:
+        abstract = True
+
+
+class CreatedAt(models.Model):
+    created_at = models.DateField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+
+
+class UpdatedAt(models.Model):
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True

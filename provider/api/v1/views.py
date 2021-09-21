@@ -5,6 +5,11 @@ from .serializers import (
     ProviderSaleSerializer,
 )
 from .permissons import ReadOnly
+from .services import (
+    CarFilter,
+    ProviderFilter,
+    ProviderCarFilter,
+)
 
 from provider.models import (
     Car,
@@ -12,6 +17,9 @@ from provider.models import (
     ProviderCar,
     ProviderSale,
 )
+from core.api.v1.services import SaleFilter
+
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.permissions import IsAdminUser
 from rest_framework.viewsets import GenericViewSet
@@ -19,24 +27,36 @@ from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveMode
 
 
 class CarViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = CarFilter
+
     permission_classes = [IsAdminUser|ReadOnly]
     queryset = Car.objects.all()
     serializer_class = CarSerializer
 
 
 class ProviderViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ProviderFilter
+
     permission_classes = [IsAdminUser|ReadOnly]
     queryset = Provider.objects.all()
     serializer_class = ProviderSerializer
 
 
 class ProviderCarViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ProviderCarFilter
+
     permission_classes = [IsAdminUser|ReadOnly]
     queryset = ProviderCar.objects.all()
     serializer_class = ProviderCarSerializer
 
 
 class ProviderSaleViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = SaleFilter
+
     permission_classes = [IsAdminUser|ReadOnly]
     queryset = ProviderSale.objects.all()
     serializer_class = ProviderSaleSerializer
