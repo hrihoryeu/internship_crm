@@ -7,7 +7,6 @@ from .serializers import (
 from .permissions import ReadOnly
 from .services import (
     CarShowroomFilter,
-    CarShowroomSaleFilter,
     CarShowroomCarFilter,
     CarShowroomCustomerFilter,
 )
@@ -18,6 +17,8 @@ from car_showroom.models import (
     CarShowroomSale,
     CarShowroomCustomer,
 )
+
+from core.api.v1.services import SaleFilter
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -46,7 +47,7 @@ class CarShowroomCarViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin
 
 class CarShowroomSaleViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
     filter_backends = (DjangoFilterBackend,)
-    filterset_class = CarShowroomSaleFilter
+    filterset_class = SaleFilter
 
     permission_classes = [IsAdminUser|ReadOnly]
     queryset = CarShowroomSale.objects.all()

@@ -19,12 +19,6 @@ class CarShowroomFilter(filters.FilterSet):
         fields = ('title', 'balance',)
 
 
-class CarShowroomSaleFilter(SaleFilter):
-    class Meta:
-        model = CarShowroomSale
-        fields = ('title', 'starts', 'discount',)
-
-
 class CarShowroomCarFilter(filters.FilterSet):
     class Meta:
         model = CarShowroomCar
