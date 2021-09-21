@@ -13,6 +13,10 @@ from provider.models import (
     ProviderSale,
 )
 
+from core.api.v1.services import SaleFilter
+
+from django_filters.rest_framework import DjangoFilterBackend
+
 from rest_framework.permissions import IsAdminUser
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin
@@ -37,6 +41,9 @@ class ProviderCarViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, U
 
 
 class ProviderSaleViewSet(ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = SaleFilter
+
     permission_classes = [IsAdminUser|ReadOnly]
     queryset = ProviderSale.objects.all()
     serializer_class = ProviderSaleSerializer
