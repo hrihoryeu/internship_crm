@@ -20,10 +20,11 @@ class ProviderSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProviderCarSerializer(serializers.ModelSerializer):
+class ProviderCarSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ProviderCar
-        fields = '__all__'
+        fields = ('id', 'price', 'provider', 'car')
+
 
 
 class ProviderSaleSerializer(serializers.ModelSerializer):

@@ -25,6 +25,9 @@ class CarShowroomSale(Sale):
 class CarShowroomCar(models.Model):
     car_showroom = models.ForeignKey(CarShowroom, on_delete=models.CASCADE)
     car = models.ForeignKey('provider.Car', on_delete=models.CASCADE)
+    price = models.IntegerField(validators=(
+        MinValueValidator(limit_value=0),
+    ), default=0)
     value = models.IntegerField(default=0)
 
 

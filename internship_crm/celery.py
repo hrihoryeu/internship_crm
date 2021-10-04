@@ -1,16 +1,14 @@
-import os
 from celery import Celery
 from celery.schedules import crontab
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'internship_crm.settings')
 
 app = Celery('internship_crm')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
-    'create-object-every-1-min': {
-        'task': 'provider.tasks.create_beat_car',
-        'schedule': crontab(),
+    'print_specs_of_car_showrooms': {
+        'task': 'car_showroom.tasks.car_showroom_buy_provider',
+        'schedule': crontab(minute='*/5'),
     },
 }

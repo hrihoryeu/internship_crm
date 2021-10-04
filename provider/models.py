@@ -17,7 +17,10 @@ class Provider(models.Model):
     title = models.CharField(max_length=100)
     establishment = models.DateField(auto_created=True)
     car_list = models.ManyToManyField(Car, through='ProviderCar')
-    car_showroom_list = models.ManyToManyField(CarShowroom)
+    car_showroom_list = models.ManyToManyField(CarShowroom, null=True, blank=True, related_name='provider')
+
+    def __str__(self):
+        return self.title
 
 
 class ProviderCar(models.Model):

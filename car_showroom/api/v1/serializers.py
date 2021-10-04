@@ -25,6 +25,26 @@ class CarShowroomSerializer(serializers.ModelSerializer):
             Location.objects.create(car_showroom=car_showroom, **location_data)
         return car_showroom
 
+    def update(self, instance, validated_data):
+        locations_data = validated_data.pop('location')
+        locations = (instance.location).all()
+        locations = list(locations)
+        instance.title = validated_data.get('title', instance.title)
+        instance.specs = validated_data.get('specs', instance.specs)
+        instance.balance = validated_data.get('balance', instance.balance)
+        instance.unique_customers = validated_data.get('unique_customers', instance.unique_customers)
+        instance.save()
+        for location_data in locations_data:
+            location = locations.pop(0)
+            location.car_showroom = location_data.get('car_showroom', location.car_showroom)
+            location.country = location_data.get('country', location.country)
+            location.city = location_data.get('city', location.city)
+            location.street = location_data.get('street', location.street)
+            location.building_number = location_data.get('building_number', location.building_number)
+            location.index = location_data.get('index', location.index)
+            location.save()
+        return instance
+
 
 class CarShowroomSaleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,7 +58,7 @@ class CarShowroomCustomerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CarShowroomCarSerializer(serializers.ModelSerializer):
+class CarShowroomCarSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CarShowroomCar
         fields = '__all__'
