@@ -8,13 +8,15 @@ class Sale(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     starts = models.DateField(blank=True)
-    duration_days = models.IntegerField(validators=(MinValueValidator(limit_value=5),), default=5)
+    duration_days = models.IntegerField(validators=(
+        MinValueValidator(limit_value=1),
+    ),
+        default=5)
     discount = models.IntegerField(validators=(
         MinValueValidator(limit_value=5),
         MaxValueValidator(limit_value=60)
     ),
         default=5)
-    cars_list = models.ManyToManyField('provider.Car')
 
     class Meta:
         abstract = True
@@ -33,7 +35,7 @@ class Location(models.Model):
 
 
 class IsActive(models.Model):
-    is_active = models.BooleanField
+    is_active = models.BooleanField()
 
     class Meta:
         abstract = True

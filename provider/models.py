@@ -2,7 +2,12 @@ from django.db import models
 from django.core.validators import MinValueValidator
 
 from car_showroom.models import CarShowroom
-from core.models import Sale
+from core.models import (
+    Sale,
+    IsActive,
+    CreatedAt,
+    UpdatedAt
+)
 
 
 class Car(models.Model):
@@ -31,5 +36,6 @@ class ProviderCar(models.Model):
     ))
 
 
-class ProviderSale(Sale):
-    provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
+class ProviderSale(Sale, IsActive):
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='provider_sale')
+    cars_list = models.ManyToManyField('provider.Car', related_name='sale_car')

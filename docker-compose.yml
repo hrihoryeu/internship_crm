@@ -10,25 +10,23 @@ services:
       - .env
     depends_on:
       - db
-      - redis
+
   celery:
     build: .
     command: celery -A internship_crm worker -l INFO
     volumes:
       - .:/Users/ye/Documents/work/itgenio/python/internship_crm/
-    depends_on:
-      - web
-      - redis
     env_file:
       - .env
+    depends_on:
+      - celery-beat
+      - flower
+      - redis
   celery-beat:
     build: .
     command: celery -A internship_crm beat -l INFO
     volumes:
       - .:/Users/ye/Documents/work/itgenio/python/internship_crm/
-    depends_on:
-      - web
-      - redis
     env_file:
       - .env
   db:
