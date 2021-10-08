@@ -27,7 +27,9 @@ def car_showroom_buy_provider():
                                                       value=1)
                     car_price = provider_car.price
                     try:
-                        provider_sale = ProviderSale.objects.get(cars_list=int(car_id), provider=provider_id)
+                        provider_sale = ProviderSale.objects.get(cars_list=int(car_id),
+                                                                 provider=provider_id,
+                                                                 is_active=True)
                         car_price = car_price * (1 - (provider_sale.discount / 100))
                     except ProviderSale.DoesNotExist:
                         print('sale does not exists(')
