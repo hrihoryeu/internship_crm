@@ -35,7 +35,7 @@ class Location(models.Model):
 
 
 class IsActive(models.Model):
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         abstract = True
