@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'car_showroom',
-    'customer',
+    'customer.apps.CustomerConfig',
     'provider',
     'core',
     'django_countries',
