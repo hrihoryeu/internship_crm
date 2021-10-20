@@ -7,7 +7,8 @@ from provider.models import Car, ProviderCar, ProviderSale
 @app.task
 def car_showroom_buy_provider():
     for car_showroom in CarShowroom.objects.all():
-        if car_showroom.specs.get('where_to_buy') is not None:
+        specs = car_showroom.specs
+        if specs.get('where_to_buy') is not None:
             specs = specs['where_to_buy']
             for car_id, provider_id in specs.items():
                 provider_car = ProviderCar.objects.get(car_id=int(car_id),
@@ -40,8 +41,9 @@ def car_showroom_buy_provider():
 @app.task
 def where_provider():
     for car_showroom in CarShowroom.objects.all():
-        if car_showroom.specs.get('list') is not None:
-            car_specs = specs['list']
+        specs = car_showroom.specs
+        if specs.get('list') is not None:
+            car_specs = car_showroom.specs['list']
             specs_list = sorted(car_specs, key=lambda k: k['sold_amount'])[::-1]
             needed_cars = []
             for specs in specs_list:
