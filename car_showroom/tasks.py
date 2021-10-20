@@ -7,9 +7,7 @@ from provider.models import Car, ProviderCar, ProviderSale
 @app.task
 def car_showroom_buy_provider():
     for car_showroom in CarShowroom.objects.all():
-        print(car_showroom)
-        specs = car_showroom.specs
-        try:
+        if car_showroom.specs.get('where_to_buy') is not None:
             specs = specs['where_to_buy']
             for car_id, provider_id in specs.items():
                 provider_car = ProviderCar.objects.get(car_id=int(car_id),
@@ -37,16 +35,12 @@ def car_showroom_buy_provider():
                     car_showroom.save()
                 else:
                     print('not enough money, bitch!')
-        except KeyError:
-            print('no specifications found')
 
 
 @app.task
 def where_provider():
     for car_showroom in CarShowroom.objects.all():
-        print(car_showroom)
-        specs = car_showroom.specs
-        try:
+        if car_showroom.specs.get('list') is not None:
             car_specs = specs['list']
             specs_list = sorted(car_specs, key=lambda k: k['sold_amount'])[::-1]
             needed_cars = []
@@ -73,5 +67,3 @@ def where_provider():
             print(cars_json)
             car_showroom.specs['where_to_buy'] = cars_json
             car_showroom.save()
-        except KeyError:
-            print('no specifications found')
