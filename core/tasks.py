@@ -22,6 +22,5 @@ def sale_is_active():
         duration = datetime.timedelta(days=sale.duration_days)
         time_finish = time_start + duration
         time_now = datetime.datetime.now()
-        print(f'start: {time_start}\nfinish: {time_finish}\nnow: {time_now}')
         sale.is_active = True if time_start <= time_now < time_finish else False
         sale.save()
