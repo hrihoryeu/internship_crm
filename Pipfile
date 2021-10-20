@@ -8,14 +8,13 @@ psycopg2-binary = "*"
 django-countries = "*"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
-django-extensions = "*"
 django-filter = "*"
-pytest = "*"
-pytest-django = "*"
 Django = "*"
 drf-yasg = "*"
-flake8 = "*"
 django-debug-toolbar = "*"
+celery = "*"
+redis = "*"
+flower = "*"
 
 [dev-packages]
 
